@@ -14,7 +14,8 @@ module Vim
       end
 
       def column(item)
-        "#{item.filename}:#{item.line}:".ljust(list.max_filename_length + 3)
+        # TODO shorten the filename?
+        "#{item.filename}:#{item.line}".ljust(list.max_filename_length + 2)
       end
     end
   end

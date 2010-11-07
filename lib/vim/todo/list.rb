@@ -6,9 +6,10 @@ module Vim
       end
 
       def read
-        # --exclude --include -A 2 -B 2
-        `grep -Hnr TODO .`.each_line do |line|
-          self << Item.new(line)
+        `find . -not -path "*/.git/*" -print | xargs grep -In TODO`.each_line do |line|
+          if line =~ /(.*):(\d+):.*(?:TODO|FIXME)\W*(\w+.*)?/
+            self << Item.new($1, $2, $3 ? $3.strip : '-')
+          end
         end
       end
 
@@ -29,13 +30,8 @@ module Vim
     class Item
       attr_reader :filename, :line, :text
 
-      def initialize(line)
-        @filename, @line, @text = parse(line)
-      end
-
-      def parse(line)
-        line =~ /(.*):(\d+):.*(?:TODO|FIXME)\W*(\w+.*)/
-        [$1, $2, $3.strip]
+      def initialize(filename, line, text)
+        @filename, @line, @text = filename, line, text
       end
     end
   end
