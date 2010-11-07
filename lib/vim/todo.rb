@@ -49,8 +49,8 @@ module Vim
       init_window
       init_buffer
       init_keys
+      init_highlighting
       render
-      # init_highlighting
     end
 
     def init_window
@@ -76,6 +76,11 @@ module Vim
 
     def init_keys
       map_key :CR, :open
+    end
+
+    def init_highlighting
+      cmd 'hi link vimTodoFile Comment'
+      cmd 'syn match vimTodoFile "^\S*"'
     end
 
     def set_status(status)
