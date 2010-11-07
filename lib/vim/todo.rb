@@ -76,6 +76,7 @@ module Vim
 
     def init_keys
       map_key :CR, :open
+      map_char :R, :refresh
     end
 
     def init_highlighting
@@ -91,6 +92,10 @@ module Vim
       cmd "silent! file [#{name}]"
     end
 
+    def map_char(char, target = char, options = {})
+      map_key :"Char-#{char.to_s.ord}", target, options
+    end
+
     def map_key(key, target = key, options = {})
       map "<#{key}> :ruby Vim::Todo.action('#{target.to_s.downcase}')", options
     end
@@ -98,7 +103,6 @@ module Vim
     def map(command, options = {})
       options[:mode] ||= :nnore
       options[:buffer] = true unless options.key?(:buffer)
-      # cmd "#{options[:mode]}map <silent> #{'<buffer>' if options[:buffer]} #{'<esc>' if options[:mode] == 'i'}#{command}<CR>"
       cmd "#{options[:mode]}map #{'<buffer>' if options[:buffer]} #{'<esc>' if options[:mode] == 'i'}#{command}<CR>"
     end
   end

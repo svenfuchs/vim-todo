@@ -9,6 +9,7 @@ module Vim
       end
 
       def read
+        clear
         `find . -not -path "#{EXCLUDE}" -print | xargs grep -EIn "#{PATTERN}"`.each_line do |line|
           if line =~ /(.*):(\d+):.*(?:TODO|FIXME)\W*(\w+.*)?/
             self << Item.new($1, $2, $3 ? $3.strip : '-')

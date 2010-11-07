@@ -19,6 +19,11 @@ module Vim
         cmd "norm #{item.line}G"
       end
 
+      def refresh
+        list.read
+        render
+      end
+
       def current
         list[line_number]
       end
