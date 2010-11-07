@@ -1,0 +1,17 @@
+*vim-todo.txt* VIM Todo List Plugin
+
+Author: Sven Fuchs <svenfuchs@artweb-design.de>       *vim-todo-about*
+Source: http://github.com/svenfuchs/vim-todo
+License: MIT http://github.com/svenfuchs/vim-todo/LICENCSE
+
+
+INTRODUCTION                                          *vim-todo*
+
+
+USAGE                                                 *vim-todo-usage*
+
+This will open the todo window:
+
+  :todo
+
+Just navigate around and type <CR> to open the file under the cursor.
