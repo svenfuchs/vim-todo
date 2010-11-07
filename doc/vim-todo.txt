@@ -7,6 +7,21 @@ License: MIT http://github.com/svenfuchs/vim-todo/LICENCSE
 
 INTRODUCTION                                          *vim-todo*
 
+Simple todo list that gathers occurences of alarm words (TODO, FIXME) from
+files recursively contained in the current directory and displays these in a
+buffer.
+
+You can then review them and go to the original file and line by hitting <CR>.
+
+
+INSTALLATION                                          *vim-todo-installation*
+
+vim-todo requires |ruby| support, |vim-layout| and assumes a |pathogen| style
+setup where both vim-layout and vim-todo are subdirectories of your runtimepath.
+
+*vim-layout* http://github.com/svenfuchs/vim-layout
+*pathogen*   http://github.com/tpope/vim-pathogen
+
 
 USAGE                                                 *vim-todo-usage*
 
